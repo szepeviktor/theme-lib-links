@@ -44,10 +44,7 @@ function make_anchor_link($url)
  */
 function is_external_url($url)
 {
-    $link_url = wp_parse_url($url);
-    $home_url = wp_parse_url(home_url());
-
-    return $link_url['host'] !== $home_url['host'];
+    return wp_parse_url($url, PHP_URL_HOST) !== wp_parse_url(home_url(), PHP_URL_HOST);
 }
 
 /**
