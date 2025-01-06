@@ -47,11 +47,7 @@ function is_external_url($url)
     $link_url = wp_parse_url($url);
     $home_url = wp_parse_url(home_url());
 
-    if ($link_url['host'] === $home_url['host']) {
-        return false;
-    }
-
-    return true;
+    return $link_url['host'] !== $home_url['host'];
 }
 
 /**
